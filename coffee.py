@@ -28,7 +28,7 @@ hx1.set_reference_unit(referenceUnit1)
 hx1.reset()
 hx1.tare()
 
-referenceUnit2 = -980
+referenceUnit2 = 1
 hx2 = HX711(26,16)
 hx2.set_reading_format("MSB", "MSB")
 hx2.set_reference_unit(referenceUnit1)
