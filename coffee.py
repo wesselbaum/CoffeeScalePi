@@ -198,7 +198,8 @@ def getWeight(callback):
             
             val = hx1.get_weight(5)
             val2 = hx2.get_weight(5)
-            callback('hx1: ' + str(val) + 'hx2: ' + str(val2)   )
+            callback(val)
+            print('hx1: ' + str(val) + 'hx2: ' + str(val2)   )
             
         except (KeyboardInterrupt, SystemExit):
             currentWater.value = 'unknown'
