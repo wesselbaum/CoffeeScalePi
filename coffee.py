@@ -28,12 +28,12 @@ hx1.set_reference_unit(referenceUnit1)
 hx1.reset()
 hx1.tare()
 
-# referenceUnit2 = 1
-# hx2 = HX711(26,16)
-# hx2.set_reading_format("MSB", "MSB")
-# hx2.set_reference_unit(referenceUnit1)
-# hx2.reset()
-# hx2.tare()
+referenceUnit2 = 1
+hx2 = HX711(26,16)
+hx2.set_reading_format("MSB", "MSB")
+hx2.set_reference_unit(referenceUnit1)
+hx2.reset()
+hx2.tare()
 
 #############
 # GUI
@@ -197,9 +197,9 @@ def getWeight(callback):
         try:
             
             val = hx1.get_weight(5)
-#             val2 = hx2.get_weight(5)
+            val2 = hx2.get_weight(5)
             callback(val)
-#             print('hx1: ' + str(val) + 'hx2: ' + str(val2)   )
+            print('hx1: ' + str(val) + 'hx2: ' + str(val2)   )
             
         except (KeyboardInterrupt, SystemExit):
             currentWater.value = 'unknown'
