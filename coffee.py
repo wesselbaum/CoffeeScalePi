@@ -22,7 +22,7 @@ strengths = [12, 15, 18, 21]
 
 # weight
 referenceUnit1 = -980
-hx1 = HX711(25,24)
+hx1 = HX711(26,16)
 hx1.set_reading_format("MSB", "MSB")
 hx1.set_reference_unit(referenceUnit1)
 hx1.reset()
