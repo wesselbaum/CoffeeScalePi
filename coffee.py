@@ -2,7 +2,7 @@ from RPi import GPIO
 import sys
 from guizero import App, Text, Box, Picture
 from PIL import Image
-from Lib.hx711 import HX711
+from lib.hx711 import HX711
 import time
 
 # colors
