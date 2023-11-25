@@ -228,19 +228,23 @@ GPIO.add_event_detect(sw, GPIO.FALLING, callback=swClicked, bouncetime=500)
 #############
 
 
-def updateWeight(val):
+def updateBeanWeight(val):
     global beanWeight
+
     if (val != -99999):
         oneDecimalVal = str(round(val, 1))
-        noDecimalVal = str(round(val, 0))
-        print(oneDecimalVal)
         if oneDecimalVal == '-0.0':
             beanWeight.updateWeight('0.0')
         else:
             beanWeight.updateWeight(oneDecimalVal)
     else:
-        print('unknown value')
+        print('unknown bean value')
         beanWeight.updateWeight('0.0')
+
+
+def updateWeight(val):
+    if (currentPage == "beanWeight"):
+        updateBeanWeight(val)
 
 
 def getWeight(callback):
