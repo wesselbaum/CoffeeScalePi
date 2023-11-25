@@ -30,7 +30,7 @@ def getBeanWeight(app, textSize):
 
 def updateWeight(weightG):
     global weightGValue
-    weightGValue = weightG
+    weightGValue = str(weightG)
     # global weight
     # if (weightG != weight.value):
     # print('update weight: ' + str(weightG))
