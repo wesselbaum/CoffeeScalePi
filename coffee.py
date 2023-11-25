@@ -265,7 +265,7 @@ def updateWeight(val):
 
 def getWeight(callback):
     try:
-        val = hx1.get_weight(2)
+        val = hx1.get_weight(1)
         callback(val)
         # print('hx1: ' + str(val) )
     except (KeyboardInterrupt, SystemExit):
