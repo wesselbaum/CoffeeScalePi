@@ -28,6 +28,7 @@ def getBeanWeight(app, textSize):
 
 
 def updateWeight(weightG):
+    global weightGValue
     weightGValue = weightG
     # global weight
     # if (weightG != weight.value):
