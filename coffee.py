@@ -246,11 +246,8 @@ def updateWaterWeight(val):
     global waterWeightBox
 
     if (val != -99999):
-        oneDecimalVal = str(round(val, 0))
-        if oneDecimalVal == '-0.0':
-            waterWeight.updateWeight('0.0')
-        else:
-            waterWeight.updateWeight(oneDecimalVal)
+        oneDecimalVal = str(int(val))
+        waterWeight.updateWeight(oneDecimalVal)
     else:
         print('unknown bean value')
         beanWeight.updateWeight('0.0')
@@ -265,7 +262,7 @@ def updateWeight(val):
 
 def getWeight(callback):
     try:
-        val = hx1.get_weight(1)
+        val = hx1.get_weight(3)
         callback(val)
         # print('hx1: ' + str(val) )
     except (KeyboardInterrupt, SystemExit):
