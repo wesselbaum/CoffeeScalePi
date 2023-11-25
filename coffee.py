@@ -203,6 +203,7 @@ async def tareAndGoToWaterWeight():
 
 
 def swClicked(chanel):
+    print('swClicked')
     global currentPage
     if (currentPage == "beanContainer"):
         beanContainer.visible = False
@@ -212,7 +213,7 @@ def swClicked(chanel):
         # loop = asyncio.get_event_loop()
         # loop.run_until_complete(tareAndGoToBeanWeight())
         # loop.close()
-        asyncio.run(tareAndGoToBeanWeight())
+        tareAndGoToBeanWeight()
 
     elif (currentPage == "beanWeight"):
         beanWeightBox.visible = False
@@ -223,7 +224,7 @@ def swClicked(chanel):
         # loop = asyncio.get_event_loop()
         # loop.run_until_complete(tareAndGoToWaterWeight())
         # loop.close()
-        asyncio.run(tareAndGoToWaterWeight())
+        tareAndGoToWaterWeight()
 
     elif (currentPage == "waterWeight"):
         waterWeightBox.visible = False
