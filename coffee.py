@@ -194,10 +194,10 @@ def swClicked(chanel):
         strength.visible = True
         currentPage = "strength"
     elif (currentPage == "strength"):
+        hx1.tare()
         strength.visible = False
         beanWeightBox.visible = True
         currentPage = "beanWeight"
-        hx1.tare()
 
     elif (currentPage == "beanWeight"):
         beanWeightBox.visible = False
@@ -205,10 +205,10 @@ def swClicked(chanel):
         currentPage = "waterCan"
 
     elif (currentPage == "waterCan"):
+        hx1.tare()
         waterCan.visible = False
         waterWeightBox.visible = True
         currentPage = "waterWeight"
-        hx1.tare()
 
     elif (currentPage == "waterWeight"):
         waterWeightBox.visible = False
