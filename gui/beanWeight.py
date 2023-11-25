@@ -2,6 +2,7 @@ from guizero import App, Text, Box, Picture
 
 
 weight = None
+lastWeight = "0"
 
 
 def getBeanWeight(app, textSize):
@@ -18,8 +19,8 @@ def getBeanWeight(app, textSize):
 
 def updateWeight(weightG):
     global weight
-    if (weightG != weight.value):
+    global lastWeight
+    if (weightG != lastWeight):
+        lastWeight = weightG
         weight.value = str(weightG)
         print('update weight: ' + str(weightG))
-    # global weight
-    # weight.value = str(weightG)
