@@ -206,6 +206,7 @@ def tareAndGoToWaterWeight():
 
 
 def swClicked(chanel):
+    global swLastState
     print('swClicked')
     print('laststate: ' + str(swLastState))
     swLastState = GPIO.input(sw)
