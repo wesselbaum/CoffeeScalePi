@@ -191,7 +191,7 @@ def dtClicked(chanel):
 
 def tareAndGoToBeanWeight():
     global currentPage
-    hx1.tare()
+    asyncio.run(hx1.tare())
     strength.visible = False
     beanWeightBox.visible = True
     currentPage = "beanWeight"
@@ -199,7 +199,7 @@ def tareAndGoToBeanWeight():
 
 def tareAndGoToWaterWeight():
     global currentPage
-    hx1.tare()
+    asyncio.run(hx1.tare())
     waterCan.visible = False
     waterWeightBox.visible = True
     currentPage = "waterWeight"
