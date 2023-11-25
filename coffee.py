@@ -189,6 +189,7 @@ def dtClicked(chanel):
 
 
 def tareAndGoToBeanWeight():
+    global currentPage
     hx1.tare()
     strength.visible = False
     beanWeightBox.visible = True
@@ -196,6 +197,7 @@ def tareAndGoToBeanWeight():
 
 
 def tareAndGoToWaterWeight():
+    global currentPage
     hx1.tare()
     waterCan.visible = False
     waterWeightBox.visible = True
