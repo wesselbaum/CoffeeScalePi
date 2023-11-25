@@ -265,14 +265,14 @@ def updateWeight(val):
 
 def getWeight(callback):
     try:
-        val = hx1.get_weight(5)
+        val = hx1.get_weight(2)
         callback(val)
         # print('hx1: ' + str(val) )
     except (KeyboardInterrupt, SystemExit):
         callback(-99999)
 
 
-app.repeat(1000, getWeight, [updateWeight])
+app.repeat(400, getWeight, [updateWeight])
 
 # def keyPressed(event_data):
 # global currentPage;
