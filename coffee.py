@@ -41,7 +41,7 @@ currentPage = 'beanContainer'
 
 beanContainer = beanContainer.getBeanContainer(app, textSize)
 strength = strength.getStrength(app, textSize)
-beanWeight = beanWeight.getBeanWeight(app, textSize)
+beanWeightBox = beanWeight.getBeanWeight(app, textSize)
 waterCan = waterCan.getWaterCan(app, textSize)
 waterWeight = waterWeight.getWaterWeight(app, textSize)
 
@@ -192,11 +192,11 @@ def swClicked(chanel):
         currentPage="strength"
     elif(currentPage == "strength"):
         strength.visible = False
-        beanWeight.visible = True
+        beanWeightBox.visible = True
         currentPage="beanWeight"
 
     elif(currentPage == "beanWeight"):
-        beanWeight.visible = False
+        beanWeightBox.visible = False
         waterCan.visible = True
         currentPage="waterCan"
 
