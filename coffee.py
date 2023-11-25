@@ -242,9 +242,25 @@ def updateBeanWeight(val):
         beanWeight.updateWeight('0.0')
 
 
+def updateWaterWeight(val):
+    global waterWeight
+
+    if (val != -99999):
+        oneDecimalVal = str(round(val, 0))
+        if oneDecimalVal == '-0.0':
+            waterWeight.updateWeight('0.0')
+        else:
+            waterWeight.updateWeight(oneDecimalVal)
+    else:
+        print('unknown bean value')
+        beanWeight.updateWeight('0.0')
+
+
 def updateWeight(val):
     if (currentPage == "beanWeight"):
         updateBeanWeight(val)
+    if (currentPage == "waterWeight"):
+        updateWaterWeight(val)
 
 
 def getWeight(callback):

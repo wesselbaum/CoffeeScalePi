@@ -1,18 +1,14 @@
 from guizero import App, Text, Box, Picture
 
 
-beanWeightBox = None
-text = None
 weight = None
-next = None
-weightGValue = ''
 
 
 def getBeanWeight(app, textSize):
-    global beanWeightBox
-    global text
+    beanWeightBox
+    text
     global weight
-    global next
+    next
     beanWeightBox = Box(app, visible=False)
     text = Text(beanWeightBox, size=textSize,
                 text='Grind the beans and place them with\nthe container on the scale')
