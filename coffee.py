@@ -3,7 +3,7 @@ import sys
 from guizero import App, Text, Box, Picture
 from PIL import Image
 from gui import beanContainer, strength, beanWeight, waterCan, waterWeight
-# from lib.hx711 import HX711
+from lib.hx711 import HX711
 import time
 
 # colors
@@ -23,12 +23,12 @@ lastRelationshipWater = 1
 strengths = [12, 15, 18, 21]
 
 # weight
-# referenceUnit1 = -980
-# hx1 = HX711(25,24)
-# hx1.set_reading_format("MSB", "MSB")
-# hx1.set_reference_unit(referenceUnit1)
-# hx1.reset()
-# hx1.tare()
+referenceUnit1 = -980
+hx1 = HX711(25,24)
+hx1.set_reading_format("MSB", "MSB")
+hx1.set_reference_unit(referenceUnit1)
+hx1.reset()
+hx1.tare()
 
 #############
 # GUI
@@ -223,18 +223,17 @@ GPIO.add_event_detect(sw, GPIO.FALLING, callback=swClicked, bouncetime=500)
 # water scale
 #############
 
-# def getWeight(callback):
-        # try:
+def getWeight(callback):
+        try:
             
-            # val = hx1.get_weight(5)
-            # val2 = hx2.get_weight(5)
-            # callback(val)
-            # print('hx1: ' + str(val) + 'hx2: ' + str(val2)   )
+            val = hx1.get_weight(5)
+            callback(val)
+            print('hx1: ' + str(val) )
             
-        # except (KeyboardInterrupt, SystemExit):
-        #     currentWater.value = 'unknown'
+        except (KeyboardInterrupt, SystemExit):
+            currentWater.value = 'unknown'
 
-# currentWater.repeat(500, getWeight, [processRecipe])
+app.repeat(500, getWeight, [processRecipe])
 
 # def keyPressed(event_data):
     # global currentPage;
