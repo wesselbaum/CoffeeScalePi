@@ -5,6 +5,7 @@ from PIL import Image
 from gui import beanContainer, strength, beanWeight, waterCan, waterWeight
 from lib.hx711 import HX711
 import time
+import asyncio
 
 # colors
 color = '#262626'
@@ -187,6 +188,20 @@ def dtClicked(chanel):
     dtLastState = dtState
 
 
+async def tareAndGoToBeanWeight():
+    hx1.tare()
+    strength.visible = False
+    beanWeightBox.visible = True
+    currentPage = "beanWeight"
+
+
+async def tareAndGoToWaterWeight():
+    hx1.tare()
+    waterCan.visible = False
+    waterWeightBox.visible = True
+    currentPage = "waterWeight"
+
+
 def swClicked(chanel):
     global currentPage
     if (currentPage == "beanContainer"):
@@ -194,10 +209,9 @@ def swClicked(chanel):
         strength.visible = True
         currentPage = "strength"
     elif (currentPage == "strength"):
-        hx1.tare()
-        strength.visible = False
-        beanWeightBox.visible = True
-        currentPage = "beanWeight"
+        loop = asyncio.get_event_loop()
+        loop.run_until_complete(tareAndGoToBeanWeight())
+        loop.close()
 
     elif (currentPage == "beanWeight"):
         beanWeightBox.visible = False
@@ -205,10 +219,9 @@ def swClicked(chanel):
         currentPage = "waterCan"
 
     elif (currentPage == "waterCan"):
-        hx1.tare()
-        waterCan.visible = False
-        waterWeightBox.visible = True
-        currentPage = "waterWeight"
+        loop = asyncio.get_event_loop()
+        loop.run_until_complete(tareAndGoToWaterWeight())
+        loop.close()
 
     elif (currentPage == "waterWeight"):
         waterWeightBox.visible = False
