@@ -10,6 +10,7 @@ weightGValue = ''
 
 def updateLabel():
     weight.set(weightGValue)
+    weight.after(50, updateLabel)
 
 
 def getBeanWeight(app, textSize):
@@ -21,7 +22,7 @@ def getBeanWeight(app, textSize):
     text = Text(beanWeightBox, size=textSize,
                 text='Grind the beans and place them with\nthe container on the scale')
     weight = Text(beanWeightBox, size=textSize*2, text="40g")
-    weight.after(50, updateLabel)
+    updateLabel()
     next = Text(beanWeightBox, size=textSize,
                 text="Click the rotation knob to continue")
     return beanWeightBox
