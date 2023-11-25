@@ -24,4 +24,5 @@ def getBeanWeight(app, textSize):
 def updateWeight(weightG):
     global weight
     print('update weight: ' + str(weightG))
-    weight.value = str(weightG) + 'g'
+    weight.clear()
+    weight.value = str(weightG)
