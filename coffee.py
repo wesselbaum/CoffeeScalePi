@@ -43,7 +43,7 @@ beanContainer = beanContainer.getBeanContainer(app, textSize)
 strength = strength.getStrength(app, textSize)
 beanWeightBox = beanWeight.getBeanWeight(app, textSize)
 waterCan = waterCan.getWaterCan(app, textSize)
-waterWeight = waterWeight.getWaterWeight(app, textSize)
+waterWeightBox = waterWeight.getWaterWeight(app, textSize)
 
 
 beanContainer.visible = True
@@ -205,11 +205,11 @@ def swClicked(chanel):
 
     elif (currentPage == "waterCan"):
         waterCan.visible = False
-        waterWeight.visible = True
+        waterWeightBox.visible = True
         currentPage = "waterWeight"
 
     elif (currentPage == "waterWeight"):
-        waterWeight.visible = False
+        waterWeightBox.visible = False
         beanContainer.visible = True
         currentPage = "beanContainer"
     print(currentPage)
@@ -243,7 +243,7 @@ def updateBeanWeight(val):
 
 
 def updateWaterWeight(val):
-    global waterWeight
+    global waterWeightBox
 
     if (val != -99999):
         oneDecimalVal = str(round(val, 0))
