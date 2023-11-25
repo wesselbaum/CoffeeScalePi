@@ -223,13 +223,17 @@ GPIO.add_event_detect(sw, GPIO.FALLING, callback=swClicked, bouncetime=500)
 # water scale
 #############
 
+def updateWeight(val):
+    global beanWeight
+    beanWeight.updateWeight(val)
+
 def getWeight(callback):
         try:
             val = hx1.get_weight(5)
-#            callback(val)
+            callback(val)
             print('hx1: ' + str(val) )
         except (KeyboardInterrupt, SystemExit):
-           currentWater.value = 'unknown'
+           callback('unknown') 
 
 app.repeat(500, getWeight, [processRecipe])
 
