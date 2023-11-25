@@ -191,7 +191,7 @@ def dtClicked(chanel):
 
 def tareAndGoToBeanWeight():
     global currentPage
-    asyncio.run(hx1.tare())
+    hx1.tare()
     strength.visible = False
     beanWeightBox.visible = True
     currentPage = "beanWeight"
@@ -199,15 +199,15 @@ def tareAndGoToBeanWeight():
 
 def tareAndGoToWaterWeight():
     global currentPage
-    asyncio.run(hx1.tare())
+    hx1.tare()
     waterCan.visible = False
     waterWeightBox.visible = True
     currentPage = "waterWeight"
 
 
 def swClicked(chanel):
-    global swLastState
     print('swClicked')
+    print(chanel)
     print('laststate: ' + str(swLastState))
     swLastState = GPIO.input(sw)
     print('currentState: ' + str(swLastState))
