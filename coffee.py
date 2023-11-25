@@ -235,7 +235,7 @@ def getWeight(callback):
         except (KeyboardInterrupt, SystemExit):
            callback('unknown') 
 
-app.repeat(500, getWeight, [processRecipe])
+app.repeat(500, getWeight, [updateWeight])
 
 # def keyPressed(event_data):
     # global currentPage;
