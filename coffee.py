@@ -223,6 +223,10 @@ def swClicked(chanel):
     print('tareTime: ' + str(tareTime))
     print('diff: ' + str(clickedTime - tareTime))
 
+    if (clickedTime - tareTime < 1):
+        print('skip')
+        return
+
     global currentPage
     if (currentPage == "beanContainer"):
         beanContainer.visible = False
