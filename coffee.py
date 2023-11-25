@@ -221,6 +221,7 @@ def swClicked(chanel):
     clickedTime = time.time()
     print('clicked: ' + str(clickedTime))
     print('tareTime: ' + str(tareTime))
+    print('diff: ' + str(clickedTime - tareTime))
 
     global currentPage
     if (currentPage == "beanContainer"):
