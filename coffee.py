@@ -189,9 +189,18 @@ def dtClicked(chanel):
     dtLastState = dtState
 
 
+tareTime = time.time()
+
+
+def tare():
+    global tareTime
+    hx1.tare()
+    tareTime = time.time()
+
+
 def tareAndGoToBeanWeight():
     global currentPage
-    hx1.tare()
+    tare()
     strength.visible = False
     beanWeightBox.visible = True
     currentPage = "beanWeight"
@@ -199,7 +208,7 @@ def tareAndGoToBeanWeight():
 
 def tareAndGoToWaterWeight():
     global currentPage
-    hx1.tare()
+    tare()
     waterCan.visible = False
     waterWeightBox.visible = True
     currentPage = "waterWeight"
@@ -208,10 +217,10 @@ def tareAndGoToWaterWeight():
 def swClicked(chanel):
     global swLastState
     print('swClicked')
-    print(chanel)
-    print('laststate: ' + str(swLastState))
-    swLastState = GPIO.input(sw)
-    print('currentState: ' + str(swLastState))
+
+    clickedTime = time.time()
+    print('clicked: ' + str(clickedTime))
+    print('tareTime: ' + str(tareTime))
 
     global currentPage
     if (currentPage == "beanContainer"):
