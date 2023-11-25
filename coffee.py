@@ -234,10 +234,13 @@ def updateWeight(val):
         oneDecimalVal = str(round(val, 1))
         noDecimalVal = str(round(val, 0))
         print(oneDecimalVal)
-        beanWeight.updateWeight(oneDecimalVal)
+        if oneDecimalVal == '-0.0':
+            beanWeight.updateWeight('0.0')
+        else:
+            beanWeight.updateWeight(oneDecimalVal)
     else:
         print('unknown value')
-        beanWeight.updateWeight(0)
+        beanWeight.updateWeight('0.0')
 
 
 def getWeight(callback):
