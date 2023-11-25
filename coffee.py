@@ -188,14 +188,14 @@ def dtClicked(chanel):
     dtLastState = dtState
 
 
-async def tareAndGoToBeanWeight():
+def tareAndGoToBeanWeight():
     hx1.tare()
     strength.visible = False
     beanWeightBox.visible = True
     currentPage = "beanWeight"
 
 
-async def tareAndGoToWaterWeight():
+def tareAndGoToWaterWeight():
     hx1.tare()
     waterCan.visible = False
     waterWeightBox.visible = True
