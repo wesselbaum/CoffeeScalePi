@@ -1,10 +1,10 @@
 from guizero import App, Text, Box, Picture
 
 
-beanWeightBox
-text 
-weight 
-next
+beanWeightBox = None
+text  = None
+weight  = None
+next = None
 def getBeanWeight(app, textSize):
     global beanWeightBox
     global text
