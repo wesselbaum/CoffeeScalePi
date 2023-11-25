@@ -9,7 +9,7 @@ weightGValue = ''
 
 
 def updateLabel():
-    weight.set(weightGValue)
+    weight.value = (weightGValue)
     weight.after(50, updateLabel)
 
 
