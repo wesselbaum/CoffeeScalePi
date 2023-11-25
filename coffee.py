@@ -162,7 +162,8 @@ GPIO.setup(sw, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 # clkLastState = GPIO.input(clk)
 # dtLastState = GPIO.input(dt)
-# swLastState = GPIO.input(sw)
+swLastState = GPIO.input(sw)
+
 
 def clkClicked(chanel):
     global relationshipWater
@@ -206,6 +207,10 @@ def tareAndGoToWaterWeight():
 
 def swClicked(chanel):
     print('swClicked')
+    print('laststate: ' + str(swLastState))
+    swLastState = GPIO.input(sw)
+    print('currentState: ' + str(swLastState))
+
     global currentPage
     if (currentPage == "beanContainer"):
         beanContainer.visible = False
