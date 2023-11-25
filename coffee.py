@@ -209,9 +209,10 @@ def swClicked(chanel):
         strength.visible = True
         currentPage = "strength"
     elif (currentPage == "strength"):
-        loop = asyncio.get_event_loop()
-        loop.run_until_complete(tareAndGoToBeanWeight())
-        loop.close()
+        # loop = asyncio.get_event_loop()
+        # loop.run_until_complete(tareAndGoToBeanWeight())
+        # loop.close()
+        asyncio.run(tareAndGoToBeanWeight)
 
     elif (currentPage == "beanWeight"):
         beanWeightBox.visible = False
@@ -219,9 +220,10 @@ def swClicked(chanel):
         currentPage = "waterCan"
 
     elif (currentPage == "waterCan"):
-        loop = asyncio.get_event_loop()
-        loop.run_until_complete(tareAndGoToWaterWeight())
-        loop.close()
+        # loop = asyncio.get_event_loop()
+        # loop.run_until_complete(tareAndGoToWaterWeight())
+        # loop.close()
+        asyncio.run(tareAndGoToWaterWeight)
 
     elif (currentPage == "waterWeight"):
         waterWeightBox.visible = False
