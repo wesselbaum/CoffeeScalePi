@@ -24,7 +24,7 @@ strengths = [12, 15, 18, 21]
 
 # weight
 referenceUnit1 = -980
-hx1 = HX711(25,24)
+hx1 = HX711(26,16)
 hx1.set_reading_format("MSB", "MSB")
 hx1.set_reference_unit(referenceUnit1)
 hx1.reset()
@@ -225,13 +225,11 @@ GPIO.add_event_detect(sw, GPIO.FALLING, callback=swClicked, bouncetime=500)
 
 def getWeight(callback):
         try:
-            
             val = hx1.get_weight(5)
-            callback(val)
+#            callback(val)
             print('hx1: ' + str(val) )
-            
         except (KeyboardInterrupt, SystemExit):
-            currentWater.value = 'unknown'
+           currentWater.value = 'unknown'
 
 app.repeat(500, getWeight, [processRecipe])
 
