@@ -24,7 +24,7 @@ strengths = [12, 15, 18, 21]
 
 # weight
 referenceUnit1 = -980
-hx1 = HX711(26,16)
+hx1 = HX711(26, 16)
 hx1.set_reading_format("MSB", "MSB")
 hx1.set_reference_unit(referenceUnit1)
 hx1.reset()
@@ -49,9 +49,9 @@ waterWeight = waterWeight.getWaterWeight(app, textSize)
 beanContainer.visible = True
 
 # targetLabel = Text(app, text="target", grid=[
-                #    0, 0], color=color, align='left')
+#    0, 0], color=color, align='left')
 # amountText = Text(app, text='1/',
-                #   grid=[0, 1], color=color, align='left', size=30)
+#   grid=[0, 1], color=color, align='left', size=30)
 # beanBox = Box(app, grid=[1, 1, 2, 1], border=0, layout='grid', align='right')
 
 # beanPicture1 = Picture(beanBox, image=boldBeanImage, grid=[0, 1])
@@ -63,23 +63,24 @@ beanContainer.visible = True
 # currentLabel = Text(app, text='Current', grid=[0, 2], color=color, align='left')
 # currentBeans = Text(app, text='', grid=[0, 3], color=color, align='left', size=30)
 # currentWater = Text(app, text='',
-                    # grid=[0, 4, 2, 1], color=color, align='left', size=30)
+# grid=[0, 4, 2, 1], color=color, align='left', size=30)
 # warning = Text(app, text='',
-            #    grid=[0, 5, 2, 1], color=alert, align='left', visible=False)
+#    grid=[0, 5, 2, 1], color=alert, align='left', visible=False)
 # strengthLabel = Text(app, text='Rotate to change Strength', grid=[0, 6], color=color, align='left')
 # resetLabel = Text(app, text='Press to tare',
-                #   grid=[0, 7], color=color, align='left')
+#   grid=[0, 7], color=color, align='left')
 # slider = Box(app, grid=[
-    # 2, 2, 2, 7], border=1, width=17, height=100, align='right')
+# 2, 2, 2, 7], border=1, width=17, height=100, align='right')
 # sliderContent = Box(slider, width=15, height=1,
-                    # border=0, align='bottom')
+# border=0, align='bottom')
 # sliderContent.bg = secondary
 # slider.set_border(1, primary)
+
 
 def processRelationship():
     global lastRelationshipWater
     amountText.value = ('1/' + str(relationshipWater))
-    if(lastRelationshipWater != relationshipWater):
+    if (lastRelationshipWater != relationshipWater):
         lastRelationshipWater = relationshipWater
         if relationshipWater < strengths[0]:
             beanPicture1.image = boldBeanImage
@@ -127,9 +128,9 @@ def processRecipe(w):
     if water > 0:
         sliderContent.height = water / waterTarget * 100
 
-    
     currentBeans.value = str(grounds) + 'g beans'
-    currentWater.value = str(waterDisplayValue)+'ml/ ' + str(waterTarget)+'ml water'
+    currentWater.value = str(waterDisplayValue) + \
+        'ml/ ' + str(waterTarget)+'ml water'
 
     if waterTarget > 1250:
         warning.value = 'Warning: Too much water for the Moccamaster'
@@ -167,53 +168,56 @@ def clkClicked(chanel):
     global clkLastState
     clkState = GPIO.input(clk)
     dtState = GPIO.input(dt)
-    
+
     if clkState == 0 and dtState == 1:
         relationshipWater += 1
         processRelationship()
-    clkLastState = clkState    
-        
+    clkLastState = clkState
+
+
 def dtClicked(chanel):
     global relationshipWater
     global dtLastState
     clkState = GPIO.input(clk)
     dtState = GPIO.input(dt)
-    
+
     if clkState == 1 and dtState == 0:
         relationshipWater -= 1
         processRelationship()
     dtLastState = dtState
-    
+
+
 def swClicked(chanel):
     global currentPage
-    if(currentPage == "beanContainer"):
+    if (currentPage == "beanContainer"):
         beanContainer.visible = False
         strength.visible = True
-        currentPage="strength"
-    elif(currentPage == "strength"):
+        currentPage = "strength"
+    elif (currentPage == "strength"):
         strength.visible = False
         beanWeightBox.visible = True
-        currentPage="beanWeight"
+        currentPage = "beanWeight"
 
-    elif(currentPage == "beanWeight"):
+    elif (currentPage == "beanWeight"):
         beanWeightBox.visible = False
         waterCan.visible = True
-        currentPage="waterCan"
+        currentPage = "waterCan"
 
-    elif(currentPage == "waterCan"):
+    elif (currentPage == "waterCan"):
         waterCan.visible = False
         waterWeight.visible = True
-        currentPage="waterWeight"
+        currentPage = "waterWeight"
 
-    elif(currentPage == "waterWeight"):
+    elif (currentPage == "waterWeight"):
         waterWeight.visible = False
         beanContainer.visible = True
-        currentPage="beanContainer"
+        currentPage = "beanContainer"
     print(currentPage)
 # warning.value = 'Tare...'
     # warning.visible = True
     # hx1.tare()
     # warning.visible = False
+
 
 # GPIO.add_event_detect(clk, GPIO.FALLING, callback=clkClicked, bouncetime=100)
 # GPIO.add_event_detect(dt, GPIO.FALLING, callback=dtClicked, bouncetime=100)
@@ -223,9 +227,10 @@ GPIO.add_event_detect(sw, GPIO.FALLING, callback=swClicked, bouncetime=500)
 # water scale
 #############
 
+
 def updateWeight(val):
     global beanWeight
-    if(val != -99999):
+    if (val != -99999):
         oneDecimalVal = str(round(val, 1))
         noDecimalVal = str(round(val, 0))
         print(oneDecimalVal)
@@ -234,42 +239,44 @@ def updateWeight(val):
         print('unknown value')
         beanWeight.updateWeight(0)
 
-def getWeight(callback):
-        try:
-            val = hx1.get_weight(5)
-            callback(val)
-            # print('hx1: ' + str(val) )
-        except (KeyboardInterrupt, SystemExit):
-           callback(-99999) 
 
-app.repeat(500, getWeight, [updateWeight])
+def getWeight(callback):
+    try:
+        val = hx1.get_weight(5)
+        callback(val)
+        # print('hx1: ' + str(val) )
+    except (KeyboardInterrupt, SystemExit):
+        callback(-99999)
+
+
+app.repeat(1000, getWeight, [updateWeight])
 
 # def keyPressed(event_data):
-    # global currentPage;
-    # if(event_data.keycode == 822083616):
-        # if(currentPage == "beanContainer"):
-        #     beanContainer.visible = False
-        #     strength.visible = True
-        #     currentPage="strength"
-        # elif(currentPage == "strength"):
-        #     strength.visible = False
-        #     beanWeight.visible = True
-        #     currentPage="beanWeight"
+# global currentPage;
+# if(event_data.keycode == 822083616):
+# if(currentPage == "beanContainer"):
+#     beanContainer.visible = False
+#     strength.visible = True
+#     currentPage="strength"
+# elif(currentPage == "strength"):
+#     strength.visible = False
+#     beanWeight.visible = True
+#     currentPage="beanWeight"
 
-        # elif(currentPage == "beanWeight"):
-        #     beanWeight.visible = False
-        #     waterCan.visible = True
-        #     currentPage="waterCan"
+# elif(currentPage == "beanWeight"):
+#     beanWeight.visible = False
+#     waterCan.visible = True
+#     currentPage="waterCan"
 
-        # elif(currentPage == "waterCan"):
-        #     waterCan.visible = False
-        #     waterWeight.visible = True
-        #     currentPage="waterWeight"
+# elif(currentPage == "waterCan"):
+#     waterCan.visible = False
+#     waterWeight.visible = True
+#     currentPage="waterWeight"
 
-        # elif(currentPage == "waterWeight"):
-        #     waterWeight.visible = False
-        #     beanContainer.visible = True
-        #     currentPage="beanContainer"
+# elif(currentPage == "waterWeight"):
+#     waterWeight.visible = False
+#     beanContainer.visible = True
+#     currentPage="beanContainer"
 
 
 # app.when_key_pressed = keyPressed
