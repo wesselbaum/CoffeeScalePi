@@ -225,10 +225,14 @@ GPIO.add_event_detect(sw, GPIO.FALLING, callback=swClicked, bouncetime=500)
 
 def updateWeight(val):
     global beanWeight
-    oneDecimalVal = str(round(val, 1))
-    noDecimalVal = str(round(val, 0))
-    print(oneDecimalVal)
-    beanWeight.updateWeight(oneDecimalVal)
+    if(val == -99999):
+        oneDecimalVal = str(round(val, 1))
+        noDecimalVal = str(round(val, 0))
+        print(oneDecimalVal)
+        beanWeight.updateWeight(oneDecimalVal)
+    else:
+        print('unknown value')
+        beanWeight.updateWeight(0)
 
 def getWeight(callback):
         try:
@@ -236,7 +240,7 @@ def getWeight(callback):
             callback(val)
             # print('hx1: ' + str(val) )
         except (KeyboardInterrupt, SystemExit):
-           callback('unknown') 
+           callback(-99999) 
 
 app.repeat(500, getWeight, [updateWeight])
 
