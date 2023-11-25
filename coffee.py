@@ -36,7 +36,7 @@ strengths = [12, 15, 18, 21]
 # boldBeanImage = './bean.png'
 # lightBean = './bean_light.png'
 app = App(title="Hello World", layout="auto", bg=bg, width=1024, height=600)
-
+app.full_screen = True
 currentPage = 'beanContainer'
 
 beanContainer = beanContainer.getBeanContainer(app, textSize)
@@ -209,14 +209,15 @@ def swClicked(chanel):
         waterWeight.visible = False
         beanContainer.visible = True
         currentPage="beanContainer"
-    # warning.value = 'Tare...'
+    print(currentPage)
+# warning.value = 'Tare...'
     # warning.visible = True
     # hx1.tare()
     # warning.visible = False
 
 # GPIO.add_event_detect(clk, GPIO.FALLING, callback=clkClicked, bouncetime=100)
 # GPIO.add_event_detect(dt, GPIO.FALLING, callback=dtClicked, bouncetime=100)
-# GPIO.add_event_detect(sw, GPIO.FALLING, callback=swClicked, bouncetime=500)
+GPIO.add_event_detect(sw, GPIO.FALLING, callback=swClicked, bouncetime=500)
 
 #############
 # water scale
@@ -271,4 +272,4 @@ def swClicked(chanel):
 
 app.display()
 
-# GPIO.cleanup()
+GPIO.cleanup()
