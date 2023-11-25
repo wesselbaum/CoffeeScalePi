@@ -5,10 +5,8 @@ weight = None
 
 
 def getBeanWeight(app, textSize):
-    beanWeightBox
-    text
+
     global weight
-    next
     beanWeightBox = Box(app, visible=False)
     text = Text(beanWeightBox, size=textSize,
                 text='Grind the beans and place them with\nthe container on the scale')
