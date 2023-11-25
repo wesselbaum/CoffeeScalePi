@@ -206,6 +206,7 @@ def tareAndGoToWaterWeight():
 
 
 def swClicked(chanel):
+    global swLastState
     print('swClicked')
     print(chanel)
     print('laststate: ' + str(swLastState))
