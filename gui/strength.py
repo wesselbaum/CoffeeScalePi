@@ -4,8 +4,8 @@ from guizero import App, Text, Box, Picture
 waterRatio = 16
 lastwaterRatio = waterRatio
 
-boldBeanImage = './bean.png'
-lightBean = './bean_light.png'
+boldBeanImage = '/home/pi/Documents/CoffeeScalePi/bean.png'
+lightBean = '/home/pi/Documents/CoffeeScalePi/bean_light.png'
 strength = None
 beanBox = None
 beanPicture1 = None

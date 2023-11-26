@@ -1,7 +1,5 @@
 from RPi import GPIO
-import sys
-from guizero import App, Text, Box, Picture
-from PIL import Image
+from guizero import App
 import os
 from gui import beanContainer, strength, beanWeight, waterCan, waterWeight
 from lib.hx711 import HX711
