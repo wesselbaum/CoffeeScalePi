@@ -28,7 +28,7 @@ def getWaterWeight(app, textSize, groundsParam, waterRatio):
     target = Box(sliderWrapper, height=2, width=50, align='top')
     target.bg = 'black'
     sliderContent.bg = 'green'
-    overflow.bg = '#eeeeee'
+    overflow.bg = 'red'
     next = Text(waterWeightBox, size=textSize,
                 text="Click the rotation knob to finish")
     return waterWeightBox
