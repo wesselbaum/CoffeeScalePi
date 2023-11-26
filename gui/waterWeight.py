@@ -18,11 +18,13 @@ def getWaterWeight(app, textSize, groundsParam, waterRatio):
     global target
     relationshipWater = waterRatio
     grounds = groundsParam
-    waterWeightBox = Box(app, visible=False)
-    text = Text(waterWeightBox, size=textSize, text='Fill the water')
-    weight = Text(waterWeightBox, size=textSize*2, text="180ml /800ml")
+    waterWeightBox = Box(app, visible=False, layout='grid')
+    text = Text(waterWeightBox, size=textSize,
+                text='Fill the water', grid=[0, 0])
+    weight = Text(waterWeightBox, size=textSize*2,
+                  text="180ml /800ml", grid=[0, 1])
     sliderWrapper = Box(waterWeightBox,
-                        width=50, border=True, height=300, align='bottom')
+                        width=50, border=True, height=300, grid=[1, 0, 1, 3])
     sliderContent = Box(sliderWrapper, height=100,
                         width=50, border=False, align='bottom')
     overflow = Box(sliderWrapper, height=50,
@@ -32,7 +34,7 @@ def getWaterWeight(app, textSize, groundsParam, waterRatio):
     sliderContent.bg = 'green'
     overflow.bg = 'red'
     next = Text(waterWeightBox, size=textSize,
-                text="Click the rotation knob to finish")
+                text="Click the rotation knob to finish", grid=[0, 3])
     return waterWeightBox
 
 
