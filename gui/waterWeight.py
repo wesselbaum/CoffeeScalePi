@@ -20,7 +20,7 @@ def getWaterWeight(app, textSize, groundsParam, waterRatio):
     text = Text(waterWeightBox, size=textSize, text='Fill the water')
     weight = Text(waterWeightBox, size=textSize*2, text="180ml /800ml")
     sliderWrapper = Box(waterWeightBox,
-                        width=50, border=True, height=200, align='bottom')
+                        width=50, border=True, height=300, align='bottom')
     sliderContent = Box(sliderWrapper, height=100,
                         width=50, border=False, align='bottom')
     overflow = Box(sliderWrapper, height=50,
@@ -55,13 +55,13 @@ def updateWeight(weightG):
             percentage = int(weightG) / targetWeight * 100
 
             if (percentage < 100):
-                sliderContent.height = percentage
-                overflow.height = 50
+                sliderContent.height = percentage * 2
+                overflow.height = 100
                 overflow.align = 'top'
             else:
                 overflowPercentage = percentage - 100
-                sliderContent.height = 100
-                overflow.height = overflowPercentage
+                sliderContent.height = 200
+                overflow.height = overflowPercentage * 2
                 overflow.align = 'bottom'
 
 
@@ -77,7 +77,7 @@ def processRecipe(w):
         waterDisplayValue = str(round(water, 1))
 
     if water > 0:
-        sliderContent.height = water / waterTarget * 100
+        sliderContent.height = water / waterTarget * 200
 
     currentBeans.value = str(grounds) + 'g beans'
     currentWater.value = str(waterDisplayValue) + \
