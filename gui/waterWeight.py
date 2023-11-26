@@ -63,7 +63,7 @@ def updateWeight(weightG):
 
             if (percentage < 1):
                 sliderContent.height = percentage * sliderWrapperHeight / 5 * 4
-                overflow.height = 100
+                overflow.height = sliderWrapperHeight / 5
                 overflow.align = 'top'
                 target.visible = True
                 overflow.bg = 'white'
@@ -71,6 +71,7 @@ def updateWeight(weightG):
                 overflowPercentage = percentage - 1
                 sliderContent.height = sliderWrapperHeight / 5 * 4
                 overflow.height = overflowPercentage * sliderWrapperHeight / 5
+                print('overflow' + str(overflowPercentage * sliderWrapperHeight / 5))
                 overflow.align = 'bottom'
                 target.visible = False
                 overflow.bg = 'red'
