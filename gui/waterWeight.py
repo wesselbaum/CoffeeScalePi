@@ -14,12 +14,12 @@ def getWaterWeight(app, textSize, groundsParam, waterRatio):
     waterWeightBox = Box(app, visible=False)
     text = Text(waterWeightBox, size=textSize, text='Fill the water')
     weight = Text(waterWeightBox, size=textSize*2, text="180ml /800ml")
-    sliderWrapper = Box(waterWeightBox, layout='grid',
+    sliderWrapper = Box(waterWeightBox,
                         width=50, border=1, height=200, align='bottom')
     sliderContent = Box(sliderWrapper, height=100,
-                        width=50, border=0, grid=[0, 1], align='bottom')
+                        width=50, border=0, align='bottom')
     overflow = Box(sliderWrapper, height=20,
-                   width=50, border=0, grid=[0, 0], align='bottom')
+                   width=50, border=0, align='bottom')
     sliderContent.bg = 'green'
     overflow.bg = 'red'
     next = Text(waterWeightBox, size=textSize,
