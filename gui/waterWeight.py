@@ -6,6 +6,7 @@ relationshipWater = 0
 sliderContent = None
 overflow = None
 targetWeight = 0
+target = None
 
 
 def getWaterWeight(app, textSize, groundsParam, waterRatio):
@@ -14,6 +15,7 @@ def getWaterWeight(app, textSize, groundsParam, waterRatio):
     global relationshipWater
     global sliderContent
     global overflow
+    global target
     relationshipWater = waterRatio
     grounds = groundsParam
     waterWeightBox = Box(app, visible=False)
@@ -58,11 +60,15 @@ def updateWeight(weightG):
                 sliderContent.height = percentage * 2
                 overflow.height = 100
                 overflow.align = 'top'
+                target.align = 'top'
+                overflow.bg = 'white'
             else:
                 overflowPercentage = percentage - 100
                 sliderContent.height = 200
                 overflow.height = overflowPercentage * 2
                 overflow.align = 'bottom'
+                target.align = 'bottom'
+                overflow.bg = 'red'
 
 
 def processRecipe(w):
