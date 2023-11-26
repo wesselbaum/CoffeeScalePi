@@ -44,7 +44,7 @@ beanContainerBox = beanContainer.getBeanContainer(app, textSize)
 strengthBox = strength.getStrength(app, textSize)
 beanWeightBox = beanWeight.getBeanWeight(app, textSize)
 waterCanBox = waterCan.getWaterCan(app, textSize)
-waterWeightBox = waterWeight.getWaterWeight(app, textSize)
+waterWeightBox = waterWeight.getWaterWeight(app, textSize, relationshipWater)
 
 
 beanContainerBox.visible = True
