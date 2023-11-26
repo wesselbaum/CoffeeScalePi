@@ -38,9 +38,11 @@ def prepareState(groundsParam, waterRatio):
     global grounds
     global relationshipWater
     global targetWeight
+    print('prepareState' + str(groundsParam) + " " + str(waterRatio))
     grounds = groundsParam
     relationshipWater = waterRatio
     targetWeight = groundsParam * waterRatio
+    print(targetWeight)
 
 
 def updateWeight(weightG):
