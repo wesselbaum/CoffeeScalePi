@@ -34,9 +34,8 @@ hx1.tare()
 #############
 # GUI
 #############
-# boldBeanImage = './bean.png'
-# lightBean = './bean_light.png'
-app = App(title="Hello World", layout="auto", bg=bg, width=1024, height=600)
+app = App(title="Coffee Scale Pi", layout="auto",
+          bg=bg, width=1024, height=600)
 app.full_screen = True
 currentPage = 'beanContainer'
 
@@ -49,37 +48,6 @@ waterWeightBox = waterWeight.getWaterWeight(
 
 
 beanContainerBox.visible = True
-
-# targetLabel = Text(app, text="target", grid=[
-#    0, 0], color=color, align='left')
-# amountText = Text(app, text='1/',
-#   grid=[0, 1], color=color, align='left', size=30)
-# beanBox = Box(app, grid=[1, 1, 2, 1], border=0, layout='grid', align='right')
-
-# beanPicture1 = Picture(beanBox, image=boldBeanImage, grid=[0, 1])
-# beanPicture2 = Picture(beanBox, image=boldBeanImage, grid=[1, 1])
-# beanPicture3 = Picture(beanBox, image=boldBeanImage, grid=[2, 1])
-# beanPicture4 = Picture(beanBox, image=boldBeanImage, grid=[3, 1])
-# beanPicture5 = Picture(beanBox, image=lightBean, grid=[4, 1])
-
-# currentLabel = Text(app, text='Current', grid=[0, 2], color=color, align='left')
-# currentBeans = Text(app, text='', grid=[0, 3], color=color, align='left', size=30)
-# currentWater = Text(app, text='',
-# grid=[0, 4, 2, 1], color=color, align='left', size=30)
-# warning = Text(app, text='',
-#    grid=[0, 5, 2, 1], color=alert, align='left', visible=False)
-# strengthLabel = Text(app, text='Rotate to change Strength', grid=[0, 6], color=color, align='left')
-# resetLabel = Text(app, text='Press to tare',
-#   grid=[0, 7], color=color, align='left')
-# slider = Box(app, grid=[
-# 2, 2, 2, 7], border=1, width=17, height=100, align='right')
-# sliderContent = Box(slider, width=15, height=1,
-# border=0, align='bottom')
-# sliderContent.bg = secondary
-# slider.set_border(1, primary)
-
-
-# processRelationship()
 
 
 #############
@@ -94,11 +62,6 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(clk, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(dt, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(sw, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-
-
-# clkLastState = GPIO.input(clk)
-# dtLastState = GPIO.input(dt)
-swLastState = GPIO.input(sw)
 
 
 def clkClicked(chanel):
@@ -136,30 +99,8 @@ def tare():
     tareTime = time.time()
 
 
-def tareAndGoToBeanWeight():
-    global currentPage
-    tare()
-    strengthBox.visible = False
-    beanWeightBox.visible = True
-    currentPage = "beanWeight"
-
-
-def tareAndGoToWaterWeight():
-    global currentPage
-    tare()
-    waterCanBox.visible = False
-    waterWeightBox.visible = True
-    currentPage = "waterWeight"
-
-
 def swClicked(chanel):
-    global swLastState
-    print('swClicked')
-
     clickedTime = time.time()
-    print('clicked: ' + str(clickedTime))
-    print('tareTime: ' + str(tareTime))
-    print('diff: ' + str(clickedTime - tareTime))
 
     if (clickedTime - tareTime < 1):
         print('skip')
@@ -171,31 +112,25 @@ def swClicked(chanel):
         strengthBox.visible = True
         currentPage = "strength"
     elif (currentPage == "strength"):
-        # loop = asyncio.get_event_loop()
-        # loop.run_until_complete(tareAndGoToBeanWeight())
-        # loop.close()
-        tareAndGoToBeanWeight()
-
+        tare()
+        strengthBox.visible = False
+        beanWeightBox.visible = True
+        currentPage = "beanWeight"
     elif (currentPage == "beanWeight"):
         beanWeightBox.visible = False
         waterCanBox.visible = True
         currentPage = "waterCan"
 
     elif (currentPage == "waterCan"):
-        # loop = asyncio.get_event_loop()
-        # loop.run_until_complete(tareAndGoToWaterWeight())
-        # loop.close()
-        tareAndGoToWaterWeight()
-
+        tare()
+        waterCanBox.visible = False
+        waterWeightBox.visible = True
+        currentPage = "waterWeight"
     elif (currentPage == "waterWeight"):
         waterWeightBox.visible = False
         beanContainerBox.visible = True
         currentPage = "beanContainer"
     print(currentPage)
-# warning.value = 'Tare...'
-    # warning.visible = True
-    # hx1.tare()
-    # warning.visible = False
 
 
 GPIO.add_event_detect(clk, GPIO.FALLING, callback=clkClicked, bouncetime=100)
@@ -249,36 +184,6 @@ def getWeight(callback):
 
 
 app.repeat(400, getWeight, [updateWeight])
-
-# def keyPressed(event_data):
-# global currentPage;
-# if(event_data.keycode == 822083616):
-# if(currentPage == "beanContainer"):
-#     beanContainer.visible = False
-#     strength.visible = True
-#     currentPage="strength"
-# elif(currentPage == "strength"):
-#     strength.visible = False
-#     beanWeight.visible = True
-#     currentPage="beanWeight"
-
-# elif(currentPage == "beanWeight"):
-#     beanWeight.visible = False
-#     waterCan.visible = True
-#     currentPage="waterCan"
-
-# elif(currentPage == "waterCan"):
-#     waterCan.visible = False
-#     waterWeight.visible = True
-#     currentPage="waterWeight"
-
-# elif(currentPage == "waterWeight"):
-#     waterWeight.visible = False
-#     beanContainer.visible = True
-#     currentPage="beanContainer"
-
-
-# app.when_key_pressed = keyPressed
 
 #############
 # Finish
