@@ -54,6 +54,8 @@ def updateWeight(weightG):
 
             if (percentage < 100):
                 sliderContent.height = percentage
+                overflow.height = 50
+                overflow.align = 'top'
             else:
                 overflowPercentage = percentage - 100
                 sliderContent.height = 100
