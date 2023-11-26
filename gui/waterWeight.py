@@ -3,12 +3,16 @@ from guizero import App, Text, Box, Picture
 weight = None
 grounds = 0
 relationshipWater = 0
+sliderContent = None
+overflow = None
 
 
 def getWaterWeight(app, textSize, groundsParam, waterRatio):
     global weight
     global grounds
     global relationshipWater
+    global sliderContent
+    global overflow
     relationshipWater = waterRatio
     grounds = groundsParam
     waterWeightBox = Box(app, visible=False)
@@ -18,8 +22,8 @@ def getWaterWeight(app, textSize, groundsParam, waterRatio):
                         width=50, border=1, height=200, align='bottom')
     sliderContent = Box(sliderWrapper, height=100,
                         width=50, border=0, align='bottom')
-    overflow = Box(sliderWrapper, height=20,
-                   width=50, border=0, align='bottom')
+    overflow = Box(sliderWrapper, height=50,
+                   width=50, border=True, align='top')
     sliderContent.bg = 'green'
     overflow.bg = 'red'
     next = Text(waterWeightBox, size=textSize,
