@@ -17,9 +17,9 @@ def getWaterWeight(app, textSize, groundsParam, waterRatio):
     sliderWrapper = Box(waterWeightBox, layout='grid',
                         width=50, border=1, height=200, align='bottom')
     sliderContent = Box(sliderWrapper, height=100,
-                        width=50, border=0, grid=[0, 0])
+                        width=50, border=0, grid=[0, 1], align='bottom')
     overflow = Box(sliderWrapper, height=20,
-                   width=50, border=0, grid=[0, 0])
+                   width=50, border=0, grid=[0, 0], align='bottom')
     sliderContent.bg = 'green'
     overflow.bg = 'red'
     next = Text(waterWeightBox, size=textSize,
