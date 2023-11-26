@@ -49,15 +49,16 @@ def updateWeight(weightG):
         weight.value = str(weightG) + "ml  / " + \
             str(targetWeight) + "ml"
         print('update weight: ' + str(weightG))
-        percentage = int(weightG) / targetWeight * 100
+        if (targetWeight > 0):
+            percentage = int(weightG) / targetWeight * 100
 
-        if (percentage < 100):
-            sliderContent.height = percentage
-        else:
-            overflowPercentage = percentage - 100
-            sliderContent.height = 100
-            overflow.height = overflowPercentage
-            overflow.align = 'bottom'
+            if (percentage < 100):
+                sliderContent.height = percentage
+            else:
+                overflowPercentage = percentage - 100
+                sliderContent.height = 100
+                overflow.height = overflowPercentage
+                overflow.align = 'bottom'
 
 
 def processRecipe(w):
