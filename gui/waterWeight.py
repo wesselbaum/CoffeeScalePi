@@ -60,14 +60,14 @@ def updateWeight(weightG):
                 sliderContent.height = percentage * 2
                 overflow.height = 100
                 overflow.align = 'top'
-                target.align = 'top'
+                target.visible = True
                 overflow.bg = 'white'
             else:
                 overflowPercentage = percentage - 100
                 sliderContent.height = 200
                 overflow.height = overflowPercentage * 2
                 overflow.align = 'bottom'
-                target.align = 'bottom'
+                target.visible = False
                 overflow.bg = 'red'
 
 
