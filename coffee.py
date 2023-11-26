@@ -17,7 +17,7 @@ textSize = 40
 
 # recipe
 water = 300
-grounds = 60.5
+grounds = 20
 relationshipWater = 16
 lastRelationshipWater = 1
 
@@ -123,11 +123,11 @@ def swClicked(chanel):
 
     elif (currentPage == "waterCan"):
         tare()
+        waterWeight.prepareState(grounds, relationshipWater)
         waterCanBox.visible = False
         waterWeightBox.visible = True
         currentPage = "waterWeight"
     elif (currentPage == "waterWeight"):
-        waterWeight.prepareState(grounds, relationshipWater)
         waterWeightBox.visible = False
         beanContainerBox.visible = True
         currentPage = "beanContainer"
