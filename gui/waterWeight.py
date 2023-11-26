@@ -49,7 +49,7 @@ def updateWeight(weightG):
         weight.value = str(weightG) + "ml  / " + \
             str(targetWeight) + "ml"
         print('update weight: ' + str(weightG))
-        percentage = weightG / targetWeight * 100
+        percentage = int(weightG) / targetWeight * 100
 
         if (percentage < 100):
             sliderContent.height = percentage
