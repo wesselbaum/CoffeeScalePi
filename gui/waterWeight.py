@@ -5,6 +5,7 @@ grounds = 0
 relationshipWater = 0
 sliderContent = None
 overflow = None
+targetWeight = 0
 
 
 def getWaterWeight(app, textSize, groundsParam, waterRatio):
@@ -36,16 +37,27 @@ def getWaterWeight(app, textSize, groundsParam, waterRatio):
 def prepareState(groundsParam, waterRatio):
     global grounds
     global relationshipWater
+    global targetWeight
     grounds = groundsParam
     relationshipWater = waterRatio
+    targetWeight = groundsParam * waterRatio
 
 
 def updateWeight(weightG):
     global weight
     if (weightG != weight.value):
         weight.value = str(weightG) + "ml  / " + \
-            str(grounds * relationshipWater) + "ml"
+            str(targetWeight) + "ml"
         print('update weight: ' + str(weightG))
+        percentage = weightG / targetWeight * 100
+
+        if (percentage < 100):
+            sliderContent.height = percentage
+        else:
+            overflowPercentage = percentage - 100
+            sliderContent.height = 100
+            overflow.height = overflowPercentage
+            overflow.align = 'bottom'
 
 
 def processRecipe(w):
