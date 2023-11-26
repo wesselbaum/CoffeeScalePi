@@ -64,6 +64,8 @@ GPIO.setup(clk, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(dt, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(sw, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
+os.system("export DISPLAY=:0")
+
 
 def turnScreenOn():
     os.system("xset dpms force on")
