@@ -40,14 +40,14 @@ app = App(title="Hello World", layout="auto", bg=bg, width=1024, height=600)
 app.full_screen = True
 currentPage = 'beanContainer'
 
-beanContainer = beanContainer.getBeanContainer(app, textSize)
-strength = strength.getStrength(app, textSize)
+beanContainerBox = beanContainer.getBeanContainer(app, textSize)
+strengthBox = strength.getStrength(app, textSize)
 beanWeightBox = beanWeight.getBeanWeight(app, textSize)
-waterCan = waterCan.getWaterCan(app, textSize)
+waterCanBox = waterCan.getWaterCan(app, textSize)
 waterWeightBox = waterWeight.getWaterWeight(app, textSize)
 
 
-beanContainer.visible = True
+beanContainerBox.visible = True
 
 # targetLabel = Text(app, text="target", grid=[
 #    0, 0], color=color, align='left')
@@ -76,71 +76,6 @@ beanContainer.visible = True
 # border=0, align='bottom')
 # sliderContent.bg = secondary
 # slider.set_border(1, primary)
-
-
-def processRelationship():
-    global lastRelationshipWater
-    amountText.value = ('1/' + str(relationshipWater))
-    if (lastRelationshipWater != relationshipWater):
-        lastRelationshipWater = relationshipWater
-        if relationshipWater < strengths[0]:
-            beanPicture1.image = boldBeanImage
-            beanPicture2.image = boldBeanImage
-            beanPicture3.image = boldBeanImage
-            beanPicture4.image = boldBeanImage
-            beanPicture5.image = boldBeanImage
-        if relationshipWater >= strengths[0]:
-            beanPicture1.image = boldBeanImage
-            beanPicture2.image = boldBeanImage
-            beanPicture3.image = boldBeanImage
-            beanPicture4.image = boldBeanImage
-            beanPicture5.image = lightBean
-        if relationshipWater >= strengths[1]:
-            beanPicture1.image = boldBeanImage
-            beanPicture2.image = boldBeanImage
-            beanPicture3.image = boldBeanImage
-            beanPicture4.image = lightBean
-            beanPicture5.image = lightBean
-        if relationshipWater >= strengths[2]:
-            beanPicture1.image = boldBeanImage
-            beanPicture2.image = boldBeanImage
-            beanPicture3.image = lightBean
-            beanPicture4.image = lightBean
-            beanPicture5.image = lightBean
-        if relationshipWater >= strengths[3]:
-            beanPicture1.image = boldBeanImage
-            beanPicture2.image = lightBean
-            beanPicture3.image = lightBean
-            beanPicture4.image = lightBean
-            beanPicture5.image = lightBean
-
-
-def processRecipe(w):
-    global water
-    global waterTarget
-
-    water = w
-    waterTarget = grounds * relationshipWater
-    if water < 0 and water > -0.2:
-        waterDisplayValue = 0.0
-    else:
-        waterDisplayValue = str(round(water, 1))
-
-    if water > 0:
-        sliderContent.height = water / waterTarget * 100
-
-    currentBeans.value = str(grounds) + 'g beans'
-    currentWater.value = str(waterDisplayValue) + \
-        'ml/ ' + str(waterTarget)+'ml water'
-
-    if waterTarget > 1250:
-        warning.value = 'Warning: Too much water for the Moccamaster'
-        warning.visible = True
-    if grounds > 70:
-        warning.value = 'Warning: Too much grounds for the Moccamaster'
-        warning.visible = True
-    if grounds < 71 and waterTarget < 1251:
-        warning.visible = False
 
 
 # processRelationship()
@@ -173,7 +108,7 @@ def clkClicked(chanel):
 
     if clkState == 0 and dtState == 1:
         relationshipWater += 1
-        processRelationship()
+        strength.adjustRatio(relationshipWater)
     clkLastState = clkState
 
 
@@ -185,7 +120,7 @@ def dtClicked(chanel):
 
     if clkState == 1 and dtState == 0:
         relationshipWater -= 1
-        processRelationship()
+        strength.adjustRatio(relationshipWater)
     dtLastState = dtState
 
 
@@ -201,7 +136,7 @@ def tare():
 def tareAndGoToBeanWeight():
     global currentPage
     tare()
-    strength.visible = False
+    strengthBox.visible = False
     beanWeightBox.visible = True
     currentPage = "beanWeight"
 
@@ -209,7 +144,7 @@ def tareAndGoToBeanWeight():
 def tareAndGoToWaterWeight():
     global currentPage
     tare()
-    waterCan.visible = False
+    waterCanBox.visible = False
     waterWeightBox.visible = True
     currentPage = "waterWeight"
 
@@ -229,8 +164,8 @@ def swClicked(chanel):
 
     global currentPage
     if (currentPage == "beanContainer"):
-        beanContainer.visible = False
-        strength.visible = True
+        beanContainerBox.visible = False
+        strengthBox.visible = True
         currentPage = "strength"
     elif (currentPage == "strength"):
         # loop = asyncio.get_event_loop()
@@ -240,7 +175,7 @@ def swClicked(chanel):
 
     elif (currentPage == "beanWeight"):
         beanWeightBox.visible = False
-        waterCan.visible = True
+        waterCanBox.visible = True
         currentPage = "waterCan"
 
     elif (currentPage == "waterCan"):
@@ -251,7 +186,7 @@ def swClicked(chanel):
 
     elif (currentPage == "waterWeight"):
         waterWeightBox.visible = False
-        beanContainer.visible = True
+        beanContainerBox.visible = True
         currentPage = "beanContainer"
     print(currentPage)
 # warning.value = 'Tare...'
