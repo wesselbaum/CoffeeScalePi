@@ -7,7 +7,7 @@ lastwaterRatio = waterRatio
 boldBeanImage = './bean.png'
 lightBean = './bean_light.png'
 strength = None
-beanBox = Box(strength, border=0, layout='grid', align='right')
+beanBox = None
 beanPicture1 = None
 beanPicture2 = None
 beanPicture3 = None
@@ -26,6 +26,7 @@ def getStrength(app, textSize, strengthsParam):
     global beanPicture5
     global amountText
     global beanBox
+    strength = Box(app, visible=False)
     beanBox = Box(strength, border=0, layout='grid', align='right')
     beanPicture1 = Picture(beanBox, image=boldBeanImage, grid=[0, 1])
     beanPicture2 = Picture(beanBox, image=boldBeanImage, grid=[1, 1])
@@ -33,7 +34,6 @@ def getStrength(app, textSize, strengthsParam):
     beanPicture4 = Picture(beanBox, image=boldBeanImage, grid=[3, 1])
     beanPicture5 = Picture(beanBox, image=lightBean, grid=[4, 1])
 
-    strength = Box(app, visible=False)
     text = Text(strength, size=textSize,
                 text='Choose the strength by rotating\nthe knob and click to continue')
     amountText = Text(strength, size=textSize, text="")
