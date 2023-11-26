@@ -161,7 +161,7 @@ def updateBeanWeight(val):
             grounds = 0
             beanWeight.updateWeight('0.0')
         else:
-            grounds = int(oneDecimalVal)
+            grounds = float(oneDecimalVal)
             beanWeight.updateWeight(oneDecimalVal)
     else:
         print('unknown bean value')
