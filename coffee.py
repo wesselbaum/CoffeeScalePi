@@ -108,6 +108,7 @@ def clkClicked(chanel):
 
     if clkState == 0 and dtState == 1:
         relationshipWater += 1
+        print(relationshipWater)
         strength.adjustRatio(relationshipWater)
     clkLastState = clkState
 
@@ -120,6 +121,7 @@ def dtClicked(chanel):
 
     if clkState == 1 and dtState == 0:
         relationshipWater -= 1
+        print(relationshipWater)
         strength.adjustRatio(relationshipWater)
     dtLastState = dtState
 

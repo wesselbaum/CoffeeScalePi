@@ -49,6 +49,7 @@ def adjustRatio(newValue):
 
 def processRelationship():
     global lastwaterRatio
+    print('processRelationship')
     amountText.value = ('1/' + str(waterRatio))
     if (lastwaterRatio != waterRatio):
         lastwaterRatio = waterRatio
