@@ -197,8 +197,8 @@ def swClicked(chanel):
     # warning.visible = False
 
 
-# GPIO.add_event_detect(clk, GPIO.FALLING, callback=clkClicked, bouncetime=100)
-# GPIO.add_event_detect(dt, GPIO.FALLING, callback=dtClicked, bouncetime=100)
+GPIO.add_event_detect(clk, GPIO.FALLING, callback=clkClicked, bouncetime=100)
+GPIO.add_event_detect(dt, GPIO.FALLING, callback=dtClicked, bouncetime=100)
 GPIO.add_event_detect(sw, GPIO.FALLING, callback=swClicked, bouncetime=500)
 
 #############
