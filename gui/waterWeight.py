@@ -7,6 +7,7 @@ sliderContent = None
 overflow = None
 targetWeight = 0
 target = None
+sliderWrapperHeight = 400
 
 
 def getWaterWeight(app, textSize, groundsParam, waterRatio):
@@ -25,7 +26,7 @@ def getWaterWeight(app, textSize, groundsParam, waterRatio):
     weight = Text(waterWeightBox, size=textSize*2,
                   text="180ml /800ml", grid=[0, 1])
     sliderWrapper = Box(waterWeightBox,
-                        width=50, border=True, height=300, grid=[2, 1, 1, 3])
+                        width=50, border=True, height=sliderWrapperHeight, grid=[2, 1, 1, 3])
     sliderWrapper.bg = 'white'
     sliderContent = Box(sliderWrapper, height=100,
                         width=50, border=False, align='bottom')
@@ -58,18 +59,18 @@ def updateWeight(weightG):
             str(targetWeight) + "ml"
         print('update weight: ' + str(weightG))
         if (targetWeight > 0):
-            percentage = int(weightG) / targetWeight * 100
+            percentage = int(weightG) / targetWeight
 
-            if (percentage < 100):
-                sliderContent.height = percentage * 2
+            if (percentage < 1):
+                sliderContent.height = percentage * sliderWrapperHeight / 5 * 4
                 overflow.height = 100
                 overflow.align = 'top'
                 target.visible = True
                 overflow.bg = 'white'
             else:
-                overflowPercentage = percentage - 100
-                sliderContent.height = 200
-                overflow.height = overflowPercentage * 2
+                overflowPercentage = percentage - 1
+                sliderContent.height = sliderWrapperHeight / 5 * 4
+                overflow.height = overflowPercentage * sliderWrapperHeight / 5
                 overflow.align = 'bottom'
                 target.visible = False
                 overflow.bg = 'red'
