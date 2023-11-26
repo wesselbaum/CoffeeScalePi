@@ -38,6 +38,7 @@ def getStrength(app, textSize, strengthsParam):
                 text='Choose the strength by rotating\nthe knob and click to continue')
     amountText = Text(strength, size=textSize, text="")
     strengths = strengthsParam
+    processRelationship()
     return strength
 
 
