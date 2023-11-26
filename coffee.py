@@ -41,10 +41,11 @@ app.full_screen = True
 currentPage = 'beanContainer'
 
 beanContainerBox = beanContainer.getBeanContainer(app, textSize)
-strengthBox = strength.getStrength(app, textSize, relationshipWater)
+strengthBox = strength.getStrength(app, textSize, strengths)
 beanWeightBox = beanWeight.getBeanWeight(app, textSize)
 waterCanBox = waterCan.getWaterCan(app, textSize)
-waterWeightBox = waterWeight.getWaterWeight(app, textSize, grounds, relationshipWater)
+waterWeightBox = waterWeight.getWaterWeight(
+    app, textSize, grounds, relationshipWater)
 
 
 beanContainerBox.visible = True
