@@ -2,6 +2,7 @@ from RPi import GPIO
 import sys
 from guizero import App, Text, Box, Picture
 from PIL import Image
+import os
 from gui import beanContainer, strength, beanWeight, waterCan, waterWeight
 from lib.hx711 import HX711
 import time
@@ -64,7 +65,12 @@ GPIO.setup(dt, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(sw, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 
+def turnScreenOn():
+    os.system("xset dpms force on")
+
+
 def clkClicked(chanel):
+    turnScreenOn()
     global relationshipWater
     global clkLastState
     clkState = GPIO.input(clk)
@@ -78,6 +84,7 @@ def clkClicked(chanel):
 
 
 def dtClicked(chanel):
+    turnScreenOn()
     global relationshipWater
     global dtLastState
     clkState = GPIO.input(clk)
@@ -100,6 +107,7 @@ def tare():
 
 
 def swClicked(chanel):
+    turnScreenOn()
     clickedTime = time.time()
 
     if (clickedTime - tareTime < 1):
