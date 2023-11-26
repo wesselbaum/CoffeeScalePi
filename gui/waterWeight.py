@@ -19,7 +19,7 @@ def getWaterWeight(app, textSize, groundsParam, waterRatio):
     text = Text(waterWeightBox, size=textSize, text='Fill the water')
     weight = Text(waterWeightBox, size=textSize*2, text="180ml /800ml")
     sliderWrapper = Box(waterWeightBox,
-                        width=50, border=False, height=200, align='bottom')
+                        width=50, border=True, height=200, align='bottom')
     sliderContent = Box(sliderWrapper, height=100,
                         width=50, border=False, align='bottom')
     overflow = Box(sliderWrapper, height=50,
