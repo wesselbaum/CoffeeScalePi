@@ -152,13 +152,16 @@ GPIO.add_event_detect(sw, GPIO.FALLING, callback=swClicked, bouncetime=500)
 
 
 def updateBeanWeight(val):
-    global beanWeight
+    # global beanWeight
+    global grounds
 
     if (val != -99999):
         oneDecimalVal = str(round(val, 1))
         if oneDecimalVal == '-0.0':
+            grounds = 0
             beanWeight.updateWeight('0.0')
         else:
+            grounds = int(oneDecimalVal)
             beanWeight.updateWeight(oneDecimalVal)
     else:
         print('unknown bean value')
