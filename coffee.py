@@ -127,6 +127,7 @@ def swClicked(chanel):
         waterWeightBox.visible = True
         currentPage = "waterWeight"
     elif (currentPage == "waterWeight"):
+        waterWeight.prepareState(grounds, relationshipWater)
         waterWeightBox.visible = False
         beanContainerBox.visible = True
         currentPage = "beanContainer"
